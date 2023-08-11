@@ -1,0 +1,62 @@
+<div class="mat-elevation-z2">
+  <mat-form-field class="custom-form-field">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="BuscarUsuario($event)" />
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource">
+    <!-- Index Column -->
+    <ng-container matColumnDef="index">
+      <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+      <mat-cell *matCellDef="let usuario; let i = index">{{
+        getCurrentIndex(i)
+        }}</mat-cell>
+    </ng-container>
+
+    <!-- Nombre Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+      <mat-cell *matCellDef="let usuario">{{ usuario.name }}</mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let usuario">{{ usuario.email }}</mat-cell>
+    </ng-container>
+
+    <!-- CUIL Column -->
+    <ng-container matColumnDef="cuil">
+      <mat-header-cell *matHeaderCellDef>Cuil</mat-header-cell>
+      <mat-cell *matCellDef="let usuario">{{ usuario.cuil }}</mat-cell>
+    </ng-container>
+
+    <!-- Estado Column -->
+    <ng-container matColumnDef="state">
+      <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+      <mat-cell *matCellDef="let usuario">{{ usuario.state | status }}</mat-cell>
+    </ng-container>
+
+    <!-- Acciones Column -->
+    <ng-container matColumnDef="shares">
+      <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+      <mat-cell *matCellDef="let usuario">
+        <button mat-icon-button (click)="verUsuario(usuario.email)">
+          <mat-icon class="view-icon">visibility</mat-icon>
+        </button>
+        <button (click)="DeshabilitarOHabilitar(usuario)"
+          [ngClass]="{ 'activo': usuario.state, 'inactivo': !usuario.state }" mat-icon-button>
+          <mat-icon>{{ usuario.state ? 'delete' : 'check_circle' }}</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Definir el orden de las columnas -->
+    <mat-header-row *matHeaderRowDef="title"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: title"></mat-row>
+  </mat-table>
+
+  <!-- Paginado de la tabla -->
+  <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChanged($event)"></mat-paginator>
+</div>

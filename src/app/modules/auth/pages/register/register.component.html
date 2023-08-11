@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="logo">
+      <img src="../../../../../assets/img/logo-header.png" alt="Logo" width="200">
+    </div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Registro</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form #f="ngForm" [formGroup]="registerForm" (ngSubmit)="register()">
+          <mat-form-field class="full-width">
+            <mat-label>Nombre</mat-label>
+            <input id="nombre" name="nombre" formControlName="nombre" matInput placeholder="Ingrese el nombre" [(ngModel)]="nombre" required>
+            <mat-error *ngIf="registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched">
+              El nombre de la empresa es requerido
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input id="email" name="email" formControlName="email" matInput placeholder="Ingrese el email" [(ngModel)]="email" required>
+            <mat-error *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+              El email es requerido
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Contraseña</mat-label>
+            <input id="password" name="password" formControlName="password" [type]="hidePassword ? 'password' : 'text'" matInput placeholder="Ingrese la contraseña" [(ngModel)]="password" required>
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+              La contraseña no tiene un formato valido
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Confirmar Contraseña</mat-label>
+            <input formControlName="confirmpassword" [type]="hidePassword ? 'password' : 'text'" matInput placeholder="Ingrese la contraseña nuevamente">
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.get('confirmpassword')?.invalid && registerForm.get('confirmpassword')?.touched">
+              La contraseña no tiene un formato valido
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Cuil</mat-label>
+            <input id="cuil" name="cuil" formControlName="cuil" matInput placeholder="Ingrese el cuil. Utilize el formato XX-XXXXXXXX-X" [(ngModel)]="cuil" required>
+            <mat-error *ngIf="registerForm.get('cuil')?.invalid && registerForm.get('cuil')?.touched">
+              El telefono de la empresa es requerido
+            </mat-error>
+          </mat-form-field>
+          <div class="button-container">
+            <button class="btn-primary" mat-raised-button color="primary" >Registrarse</button>
+            <button class="btn-secondary" mat-raised-button color="accent" type="submit" routerLink="/auth/login">Iniciar sesión</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

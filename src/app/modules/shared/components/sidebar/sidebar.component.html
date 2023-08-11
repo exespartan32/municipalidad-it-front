@@ -1,0 +1,21 @@
+<div class="navbar">
+    <div class="user">
+        <img src="../../../../../assets/img/perfil.jpg" alt="">
+        <h4 class="name">{{name | titlecase }}</h4>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-nav-list class="menu-item">
+            <a *ngFor="let item of menu" mat-list-item [routerLink]="item.link" routerLinkActive="active">
+                <div class="menu-link">
+                    <mat-icon>{{item.icon}}</mat-icon>
+                    <span>{{ item.name }}</span>
+                </div>
+            </a>
+            <a mat-list-item routerLinkActive="active" routerLink="auth">
+                <div class="menu-link">
+                    <mat-icon>logout</mat-icon>
+                    <span>Cerrar Sesión</span>
+                </div>
+            </a>
+    </mat-nav-list>
+</div>

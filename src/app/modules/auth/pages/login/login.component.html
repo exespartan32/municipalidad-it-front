@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="logo">
+        <img src="../../../../../assets/img/logo-header.png" alt="Logo" width="200">
+    </div>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Iniciar sesión</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form #f="ngForm" [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+                
+                <mat-form-field class="full-width">
+                    <mat-label>Email</mat-label>
+                    <input class="my-custom-input" id="nombreUsuario" name="nombreUsuario" formControlName="email"
+                        matInput placeholder="Ingrese su email" [(ngModel)]="nombreUsuario" required />
+                    <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                        El nombre de usuario es requerido
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <mat-label>Contraseña</mat-label>
+                    <input id="password" name="password" formControlName="password"
+                        [type]="hidePassword ? 'password' : 'text'" matInput placeholder="Ingrese su contraseña"
+                        [(ngModel)]="password" required />
+                    <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                        La contraseña es requerida
+                    </mat-error>
+                </mat-form-field>
+
+
+                <div class="button-container">
+                    <button class="btn-primary" mat-raised-button type="submit">Iniciar sesión</button>
+                    <button class="btn-secondary" mat-raised-button color="accent"
+                        routerLink="/auth/register">Registrarse</button>
+                </div>
+
+                <!--           <div class="forgot-password mt-2">
+            <button mat-button routerLink="/auth/recover">Olvidé mi contraseña</button>
+          </div> -->
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

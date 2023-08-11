@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>¿Esta seguro?</h1>
+<div mat-dialog-content>
+  <p>Estado: {{user.state | status }}</p>
+  <p>Esta a punto de {{ user.state | changeTheStatus }} a: {{user.name}}, esta seguro?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">
+    No Thanks
+  </button>
+
+  <span class="spacer"></span>
+
+  <button (click)="onConfirm()"
+          color="primary"
+          mat-button
+          cdkFocusInitial>
+          Ok
+  </button>
+</div>

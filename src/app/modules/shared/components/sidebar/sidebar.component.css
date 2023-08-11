@@ -1,0 +1,44 @@
+.navbar{
+    background: var(--color-primary);
+    height: 100%;
+}
+
+.user {
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    margin-bottom: 10px;
+}
+
+.user img {
+    margin-top: 16px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.user .name {
+    margin-top: 10px;
+    color: var(--color-white);
+    font-weight: 450;
+}
+
+.active {
+    background-color: var(--color-secondary);
+}
+
+mat-divider{
+    background-color: var(--color-white);
+  }
+
+.menu-item .menu-link{
+    display: flex; 
+    align-items: center;
+    color: var(--color-white);
+}
+
+.menu-item .menu-link span{
+    margin-left: 5px;
+    font-weight: 500;
+}
+

@@ -1,0 +1,14 @@
+<div class="container">
+  <app-table
+    [dataSource]="applicanst"
+    [title]="title"
+    [pageSizeOptions]="[5, 10, 20]"
+    [totalElements]="totalElements"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    (page)="onPageChanged($event)"
+    (viewUser)="viewDevelop($event)"
+    (disableOrEnableUser)="disableOrEnableDevelop($event)"
+    (searchUser)="searchDevelop($event)"
+  ></app-table>
+</div>
